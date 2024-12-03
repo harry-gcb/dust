@@ -26,4 +26,6 @@ clap = "4.5.21"
 config-file = "0.2.3"
 ctrlc = "3.4.5"
 directories = "5.0.1"
+regex = "1.11.1"
 serde = { version = "1.0.215", features = ["derive"] }
+terminal_size = "0.4.1"

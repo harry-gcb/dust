@@ -8,6 +8,7 @@ use std::path::PathBuf;
 #[serde(rename_all = "kebab-case")]
 #[serde(deny_unknown_fields)]
 pub struct Config {
+    pub depth: Option<usize>,
     pub files0_from: Option<String>,
 }
 
@@ -18,6 +19,12 @@ impl Config {
             None => self.files0_from.as_ref().map(|x| x.to_string()),
             Some(x) => Some(x.to_string()),
         }
+    }
+    pub fn get_depth(&self, options: &ArgMatches) -> usize {
+        if let Some(v) = options.get_one("depth") {
+            return *v;
+        }
+        self.depth.unwrap_or(usize::MAX)
     }
 }
 
